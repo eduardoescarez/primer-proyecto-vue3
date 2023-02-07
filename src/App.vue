@@ -5,8 +5,16 @@
 
     let counter = ref(0)
 
-    const sumador = () =>{
+    const aumentar = () =>{
         counter.value ++
+    }
+
+    const disminuir = () =>{
+        counter.value --
+    }
+
+    const resetear = () =>{
+        counter.value = 0
     }
 
 // metodo
@@ -19,7 +27,7 @@
 
     <h2>{{ counter }}</h2>
 
-    <button @click="sumador">Aumentar</button>
+    <button @click="aumentar">Aumentar</button> <button @click="disminuir">Disminuir</button> <button @click="resetear">Resetear</button>
 
 
 </template>
