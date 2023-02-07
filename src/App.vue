@@ -1,5 +1,5 @@
 <script setup>
-    import { ref } from 'vue'
+    import { ref, computed } from 'vue'
 
     const name = "Vue dinámico"
 
@@ -17,6 +17,18 @@
         counter.value = 0
     }
 
+    const classCounter = computed(() => {
+        if (counter.value === 0) {
+            return "zero"
+        }
+        if (counter.value > 0){
+            return "positive"
+        }
+        if (counter.value < 0){
+            return "negative"
+        }
+    })
+
 // metodo
 
 
@@ -25,7 +37,7 @@
 <template>
     <h1>Hola {{ name.toUpperCase() }}</h1>
 
-    <h2 :class="counter > 0 ? 'positive' : 'negative'">{{ counter }}</h2>
+    <h2 :class="classCounter">{{ counter }}</h2>
 
     <button @click="aumentar">Aumentar</button> <button @click="disminuir">Disminuir</button> <button @click="resetear">Resetear</button>
 
@@ -41,5 +53,8 @@
     }
     .negative {
         color: red;
+    }
+    .zero {
+        color: peru;
     }
 </style>
