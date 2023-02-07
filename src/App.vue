@@ -1,11 +1,12 @@
 <script setup>
+    import { ref } from 'vue'
+
     const name = "Vue dinámico"
 
-    let counter = 0
+    let counter = ref(0)
 
     const sumador = () =>{
-        counter++
-        console.log(counter)
+        counter.value ++
     }
 
 // metodo
