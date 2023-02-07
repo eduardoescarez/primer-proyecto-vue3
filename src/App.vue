@@ -25,7 +25,7 @@
 <template>
     <h1>Hola {{ name.toUpperCase() }}</h1>
 
-    <h2>{{ counter }}</h2>
+    <h2 :class="counter > 0 ? 'positive' : 'negative'">{{ counter }}</h2>
 
     <button @click="aumentar">Aumentar</button> <button @click="disminuir">Disminuir</button> <button @click="resetear">Resetear</button>
 
@@ -33,7 +33,13 @@
 </template>
 
 <style>
-h1{
-    color: red;
-}
+    h1{
+        color: red;
+    }
+    .positive{
+        color: green;
+    }
+    .negative {
+        color: red;
+    }
 </style>
