@@ -1,9 +1,31 @@
 <script setup>
 const name = "Vue dinámico"
-const styleColor = "color: blue;"
 const arrayColores = ["blue", "red", "peru"]
 const activo = false
-const arrayFrutas = ["🍎", "🍌", "🍉", "🍓", "🍒"]
+const arrayEmojiFrutas = ["🍎", "🍌", "🍉", "🍓", "🍒"]
+const arrayFrutas = [
+        {
+            name: "Manzana",
+            price: "$1.00",
+            description: "Una manzana",
+        },
+        {
+            name: "Pera",
+            price: "$2.00",
+            description: "Una pera",
+        },
+        {
+            name: "Naranja",
+            price: "$3.00",
+            description: "Una naranja",
+        },
+    ];
+const objetoFruta = {
+    name: "Naranja",
+    price: "$3.00",
+    description: "Una naranja",
+};
+
 </script>
 
 <template>
@@ -16,10 +38,22 @@ const arrayFrutas = ["🍎", "🍌", "🍉", "🍓", "🍒"]
     <p v-show="activo">Estoy activo v-show</p>
 
     <ul>
-        <li v-for="(fruta, index) in arrayFrutas" :key="index">{{ index }} - {{ fruta }}</li>
+        <li v-for="(fruta, index) in arrayEmojiFrutas" :key="index">{{ index }} - {{ fruta }}</li>
     </ul>
 
     <br/>
+
+    <ul>
+        <li v-for="(fruta) in arrayFrutas" :key="fruta.name">{{ fruta.name }} - {{ fruta.price }} - {{ fruta.description }}</li>
+    </ul>
+
+    <br/>
+
+    <ul>
+        <li v-for="(value, propiedad, index) in objetoFruta" :key="value">{{ propiedad }} : {{ value }} - {{ index }}</li>
+    </ul>
+
+
 </template>
 
 <style>
