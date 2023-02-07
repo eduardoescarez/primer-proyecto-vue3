@@ -17,6 +17,10 @@
         counter.value = 0
     }
 
+    const favoritos = () =>{
+        
+    }
+
     const classCounter = computed(() => {
         if (counter.value === 0) {
             return "zero"
@@ -39,7 +43,8 @@
 
     <h2 :class="classCounter">{{ counter }}</h2>
 
-    <button @click="aumentar">Aumentar</button> <button @click="disminuir">Disminuir</button> <button @click="resetear">Resetear</button>
+    <button @click="aumentar">Aumentar</button> <button @click="disminuir">Disminuir</button> <button @click="resetear">Resetear</button> <button @click="favoritos">Favoritos</button>
+
 
 
 </template>
