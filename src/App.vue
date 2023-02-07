@@ -5,6 +5,8 @@
 
     let counter = ref(0)
 
+    let arrayNumeros = ref([])
+
     const aumentar = () =>{
         counter.value ++
     }
@@ -18,8 +20,13 @@
     }
 
     const favoritos = () =>{
-        
+        arrayNumeros.value.push(counter.value)
     }
+
+    const favoritosLimpiar = computed(() => {
+        for (let i = arrayNumeros.value.length; i > 0; i--) 
+            {arrayNumeros.value.pop();}
+    })
 
     const classCounter = computed(() => {
         if (counter.value === 0) {
@@ -33,6 +40,11 @@
         }
     })
 
+    const statusNumber = computed(() => {
+        const number = arrayNumeros.value.find((num) => num === counter.value);
+        return number || number === 0;
+    })
+
 // metodo
 
 
@@ -43,7 +55,11 @@
 
     <h2 :class="classCounter">{{ counter }}</h2>
 
-    <button @click="aumentar">Aumentar</button> <button @click="disminuir">Disminuir</button> <button @click="resetear">Resetear</button> <button @click="favoritos">Favoritos</button>
+    <h3>Números favoritos</h3>
+    <span v-for="numero, index in arrayNumeros" :key="index">{{ numero }} &nbsp;</span>
+    <br/>
+
+    <button @click="aumentar">Aumentar</button> <button @click="disminuir">Disminuir</button> <button @click="resetear">Resetear</button> <button @click="favoritos" :disabled="statusNumber">Agregar a Favoritos</button> <button @click="favoritosLimpiar">Limpiar favoritos</button>
 
 
 
