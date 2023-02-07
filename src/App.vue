@@ -2,8 +2,8 @@
     const name = "Vue dinámico"
 
 // metodo
-    const cliqueador = () =>{
-        console.log ("Un click recibido 😅")
+    const cliqueador = (message) =>{
+        console.log(message)
     }
 
 </script>
@@ -11,7 +11,8 @@
 <template>
     <h1>Hola {{ name.toUpperCase() }}</h1>
 
-    <button v-on:click="cliqueador">Activame</button>
+    <button v-on:click="cliqueador('texto uno')">Activame</button>
+    <button @click="cliqueador('texto dos')">Activame</button>
 
 
 </template>
