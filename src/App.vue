@@ -11,9 +11,9 @@
 <template>
     <h1>Hola {{ name.toUpperCase() }}</h1>
 
-    <button v-on:click="cliqueador('texto uno')">Activame</button>
-    <button @click="cliqueador('texto dos')">Activame</button>
-
+    <button @click.right.prevent="cliqueador('Mensaje desde derecha')"> Click right </button>
+    <button @click.middle="cliqueador('Mensaje desde centro')"> Click center </button>
+    <button @click="cliqueador('Mensaje desde izquierda')"> Click left </button>
 
 </template>
 
