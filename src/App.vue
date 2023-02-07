@@ -1,19 +1,25 @@
 <script setup>
     const name = "Vue dinámico"
 
-// metodo
-    const cliqueador = (message) =>{
-        console.log(message)
+    let counter = 0
+
+    const sumador = () =>{
+        counter++
+        console.log(counter)
     }
+
+// metodo
+
 
 </script>
 
 <template>
     <h1>Hola {{ name.toUpperCase() }}</h1>
 
-    <button @click.right.prevent="cliqueador('Mensaje desde derecha')"> Click right </button>
-    <button @click.middle="cliqueador('Mensaje desde centro')"> Click center </button>
-    <button @click="cliqueador('Mensaje desde izquierda')"> Click left </button>
+    <h2>{{ counter }}</h2>
+
+    <button @click="sumador">Aumentar</button>
+
 
 </template>
 
