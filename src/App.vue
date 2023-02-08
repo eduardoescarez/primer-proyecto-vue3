@@ -40,9 +40,11 @@
         }
     })
 
-    const statusNumber = computed(() => {
-        const number = arrayNumeros.value.find((num) => num === counter.value);
-        return number || number === 0;
+    const favoritosBloquear = computed(() => {
+        const busquedaFavorito = arrayNumeros.value.find((num) => num === counter.value);
+        // return busquedaFavorito || busquedaFavorito === 0;
+        if (busquedaFavorito === 0) return true
+        return busquedaFavorito ? true : false
     })
 
 // metodo
@@ -51,18 +53,24 @@
 </script>
 
 <template>
+    <div class="container">
     <h1>Hola {{ name.toUpperCase() }}</h1>
 
     <h2 :class="classCounter">{{ counter }}</h2>
 
     <h3>Números favoritos</h3>
-    <span v-for="numero, index in arrayNumeros" :key="index">{{ numero }} &nbsp;</span>
+    <span v-for="(numero, index) in arrayNumeros" :key="index">{{ numero }} &nbsp;</span>
     <br/>
 
-    <button @click="aumentar">Aumentar</button> <button @click="disminuir">Disminuir</button> <button @click="resetear">Resetear</button> <button @click="favoritos" :disabled="statusNumber">Agregar a Favoritos</button> <button @click="favoritosLimpiar">Limpiar favoritos</button>
+    <div class="btn-group">
+        <button @click="aumentar" class="btn btn-primary">Aumentar</button>
+        <button @click="disminuir" class="btn btn-warning">Disminuir</button>
+        <button @click="resetear" class="btn btn-danger">Resetear</button>
+        <button @click="favoritos" :disabled="favoritosBloquear" class="btn btn-success">Agregar a Favoritos</button>
+        <button @click="favoritosLimpiar" class="btn btn-danger">Limpiar favoritos</button>
+    </div>
 
-
-
+    </div>
 </template>
 
 <style>
